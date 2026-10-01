@@ -1,0 +1,22 @@
+def MakeObservations(N):       # N number of data pairs
+                               
+    Nrange = 20;               # set scale 
+
+    SigmaY = 200;
+
+    X  = np.random.uniform(0,Nrange+1,N);      # uniformly distributed between 0 and 20
+
+    Ymax = 0.5 * Nrange**3;                    # upper bound
+
+    MuY = 0.5 * X**3 - 0.5 * Ymax             # non-linear but monotonic dependence, between 0 and 200
+
+    Y  = np.random.normal(MuY, SigmaY );       # binomially distributed around mean R1
+
+    Noutlier = np.floor(N/5).astype(int)       #  add 20% outliers
+
+    ix = np.random.permutation( np.arange(0,N));      
+
+    Y[ ix[0:Noutlier] ] = np.random.uniform(low=-Ymax, high=Ymax, size=Noutlier)
+
+    return X, Y;
+

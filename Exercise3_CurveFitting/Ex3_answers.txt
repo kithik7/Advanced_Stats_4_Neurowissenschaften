@@ -1,0 +1,60 @@
+Exercise 03: Curve Fitting : Answers
+Keerthi Kesavan - 252431 INS
+
+Values also available as paragraph comments in the code itself 
+
+For N=200
+Linear model:   a = -2030.398 +/- 202.189, b = 135.165 +/- 16.734
+Parabolic model: a = -1643.736 +/- 144.858, b = 7.081 +/- 0.747
+Std of residuals, linear model:    1410.963
+Std of residuals, parabolic model: 1349.105
+
+Total variation (SS_total): 524070460.0
+Linear    - explained: 129888692.5, residual: 394181767.5, ratio: 0.330
+Parabolic - explained: 163693900.8, residual: 360376559.2, ratio: 0.454
+
+For N=30
+Linear model:   a = -2615.530 +/- 520.860, b = 195.481 +/- 38.446
+Parabolic model: a = -1868.991 +/- 379.850, b = 8.930 +/- 1.682
+Std of residuals, linear model:    1238.965
+Std of residuals, parabolic model: 1212.799
+
+Total variation (SS_total): 82665871.9
+Linear    - explained: 39684917.9, residual: 42980953.9, ratio: 0.923
+Parabolic - explained: 41481197.7, residual: 41184674.2, ratio: 1.007
+
+For N=500
+Linear model:   a = -2433.088 +/- 109.960, b = 165.257 +/- 9.094
+Parabolic model: a = -1891.887 +/- 78.120, b = 8.085 +/- 0.394
+Std of residuals, linear model:    1244.579
+Std of residuals, parabolic model: 1181.009
+
+Total variation (SS_total): 1282952556.7
+Linear    - explained: 511561866.5, residual: 771390690.2, ratio: 0.663
+Parabolic - explained: 588350686.6, residual: 694601870.2, ratio: 0.847
+
+Questions and Answers from the Exercise 
+1) judging by eye, which curve fits better?
+At N = 30 the line and the parabola sort of overlap, and the scatter of
+points makes it hard to distinguish between them. 
+At N = 500 the parabola bends to follow the data at the low and high ends of x, while the line
+cuts across the curve instead of following it. So increasing N does actually
+make a difference
+
+2) from the standard deviation of residuals, which is better?
+
+The parabola has the lower residual std at every N tested, so it is better fit throughout, even at N = 30 where
+I could not tell it apart.
+
+3) Which method is more sensitive, judging by eye or standard deviation?
+I believe standard deviation is more sensitive. Even at N = 30, where the two curves
+looked almost identical by eye, the residual std and the explained/residual
+ratio is what truly showed that the parabola was ahead. Numbers in this case tell you differences that 
+one couldn't by visually interpreting the graph (by eye).
+
+4) Why might eye and objective measures disagree?
+Through a scatter of points, the shape of a line or a parabola is rather easy to confuse.
+The std is computed from every single point's distance to the curve accurately, so it is more sensitive
+and picks up those small differences that are lost in visual interpretation. Objective measures rely on numbers and tell you
+information about the minutiae while by eye, we are able to intepret only on the basis of the observable shape that is available
+to us. 

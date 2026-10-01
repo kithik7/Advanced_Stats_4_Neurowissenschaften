@@ -1,0 +1,37 @@
+def MixedSamples( Nsample ):
+
+    # Define distributions
+    mu0 = 0
+    mu1 = 3
+    xi = np.linspace(-5, 5, 101)
+    f0i = 1/np.sqrt(2*np.pi) * np.exp(-((xi - mu0)**2)/2)
+    f1i = 1/np.sqrt(2*np.pi) * np.exp(-((xi - mu1)**2)/2)
+
+    # Define mixture
+    pi0 = 0.98
+    pi1 = 1 - pi0
+
+    # Intersection
+    sthresh = np.log(pi0/pi1) / mu1 + mu1/2
+
+    # Sample distributions
+    N = Nsample
+    N0 = round(N * pi0)
+    N1 = round(N * pi1)
+
+    s0 = np.random.normal(mu0, 1, N0)
+    s1 = np.random.normal(mu1, 1, N1)
+
+    # Combine samples and source labels
+    samples = np.concatenate([s0, s1])
+    sources = np.concatenate([np.zeros(N0), np.ones(N1)])
+
+    # Generate shuffling indices
+    indices = np.random.permutation(len(samples))
+
+    # Apply to both arrays
+    samples = samples[indices]
+    sources = sources[indices]
+
+    # Return results
+    return samples, sources, sthresh

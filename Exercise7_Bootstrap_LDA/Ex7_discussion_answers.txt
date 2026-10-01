@@ -1,0 +1,35 @@
+DISCUSSION - Exercise 07
+
+Parametric p-values (x and y separately) are already really small
+(p < 0.00001). This means that single dimension alone already rejects the null
+hypothesis 
+
+The combined LDA t-statistic (15.508) is twice as large as either
+single-dimension t-statistic (-6.697 for x, 5.740 for y). 
+This shows that what the exercise aimed to do ie increase statistical power 
+checks right. Combining booth coords into 1 discriminatiing directions 
+clusters the separation bw groups into a single number better than the both coords 
+managing on their own. 
+
+The bootstrap p-value came out as 0.000000, implying no comparison had 
+the wrong sign. This is consistent with the parametric results and 
+what the plot shows. the 2 clouds of BS centroids are separated with no 
+overlap at all, a misordered pair would show as a non0 p val, but 
+there were none here 
+
+Which p-value is most robust and informative?
+The bootstrap p-value is the most robust because it makes no
+assumption about the normality of the underlying distribution or the two
+groups having any rship bw their variances, it 
+directly resamples the actual data. 
+The parametric tests (both univariate
+and LDA) rely on the assumption that the sampling distribution of the mean
+is well approximated by a t-distribution, which is okay to assume because we only have 
+n=30 per group, 
+But said assumption isn't fact checked from the data. 
+However, in this particular dataset all three
+methods work, since the separation between groups is adequately large
+that none of the methods would actually miss it 
+The bootstrap approach is the most fitting choice if the data was not separated well 
+or stood against the normality assumption significantly more than this dataset.
+

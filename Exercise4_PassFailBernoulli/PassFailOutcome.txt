@@ -1,0 +1,22 @@
+def PassFail( Nstudent ):
+
+    TrueBeta = np.array([-1, 0.1, 0.4]);
+
+    StudyHours = np.random.randint(low=0, high=41, size=Nstudent );
+
+    Attendance = np.random.randint(low=0, high=13, size=Nstudent );
+
+    Intercept = np.ones(Nstudent);
+
+    X = np.concatenate((Intercept.reshape(-1,1), StudyHours.reshape(-1, 1), Attendance.reshape(-1, 1)), axis=1);
+
+    TrueBeta[0] = -TrueBeta[1] * np.mean(StudyHours) - TrueBeta[2] * np.mean(Attendance)
+
+    logit = X @ TrueBeta
+
+    Pi = 1 / (1 + np.exp(-logit))
+
+    Pass = np.random.binomial(n=1, p=Pi, size=Nstudent);
+
+    return Pass, Pi, X, TrueBeta
+

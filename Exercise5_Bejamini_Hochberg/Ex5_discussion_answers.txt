@@ -1,0 +1,30 @@
+Exercise 05 Benjamini-Hochberg Q and A 
+
+1) Why are the red (non-null) samples concentrated in a particular region of the cumulative distribution plot?
+
+the non-null samples come from a normal distribution centered at mean = 3 ,
+instead of the null samples which have a 0, this shifts their values
+higher. 
+Because the x-axis is sample value and samples are
+organized in a descending order, the largest values sit at the low end of the cumulative prob axis. 
+Since non null samples tend to be large, they cluster towards low cumulative probablity higher value region and the 
+right tail of the distrib 
+
+2) Why are many, but not all, red symbols below both criteria lines?
+
+The non-null distribution and the null db both have Sd = 1, and a gap of 3 SD is not enough to
+fully separate them, their tails still overlap. So a non-null sample could land on a smaller value that looks 
+statistically not so great giving it a p-value above the threshold. That sample, is a false negative, 
+a real effect that random variation did not show. Similar to type 2 errors from before 
+
+3)  does the false discovery fraction match q?
+
+At N=1000, only 13 samples were rejected by the B-H procedure, thi
+reliably show the target rate and by chance zero of them were false
+discoveries. 
+At N=20000, 305 samples were rejected, and 61 of those were
+actually false , giving me an observed fraction of 0.200,
+matching the target q=0.2 almost exactly. 
+
+This confirms that Benjamini-Hochberg test does not promise zero false discoveries, it reliably gives you the average
+proportion of false discoveries which stays close to q, and this only works with a large enough sample size
